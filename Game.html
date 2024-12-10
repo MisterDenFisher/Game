@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Arkanoid</title>
+
+        <link rel="icon" type="image/png" href="img/icon.png" />
+        <link href="style.css" rel="stylesheet" type="text/css" />
+        <script src="scripts/changeUser.js" defer></script>
+        <script src="scripts/tableRecords.js" defer></script> 
+        <script src="scripts/singleGame.js" defer></script>
+    </head>
+
+    <body>
+        <main id="Area">
+
+          <section id="LoadingScreen">Loading...</section>
+          <script src="scripts/start.js" async></script>
+
+          <section id="Game">
+            <section id="Arena"></section>
+            <section id="InfoPlayer"></section>
+            <section id="InfoGame"></section>
+          </section>
+
+          <section class="InfoMessageWindow">
+
+          </section>
+
+          <section id="ChangeUser" class="InputWindow ">
+            <div class="IW-content" id="ChangeUser-content">
+                <h1 class="IW-name">Смена игрока</h1>
+                <p id="IW-status"></p>
+                <p>Введите ваше имя:</p>
+                <input type="text" id="IW-input">
+                <button id="IW-send">Сменить</button>
+                <p id="IW-message""></p>
+            </div>
+          </section>
+          
+          <section id="Menu">
+            <h1 id="Label">ARKANOID</h1>
+            
+            <ul id="MainMenu"> 
+              <li><button class="MenuItem" id="NewGame-button">Новая игра</button></li>
+              <li><button class="MenuItem">Таблица лидеров</button></li>
+              <li><button class="MenuItem" id="ChangeUser-button">Сменить игрока</button></li>
+            </ul>
+
+            <ul id="ChoiceMenu">
+              <li><button class="MenuItem" id="SingleGame-button">Одиночная</button></li>
+              <li><button class="MenuItem">Парная</button></li>
+              <li><button class="MenuItem" id="Back-button">Назад</button></li>
+            </ul>
+          </section>
+
+        </main>
+        <script src="scripts/main.js"></script>
+        
+    </body>
+</html>

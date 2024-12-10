@@ -1,0 +1,208 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+</head>
+    </style>
+    <body>
+        <script>
+            var xhr = new XMLHttpRequest()
+            xhr.open("GET"," https://api.ipify.org?format = json",false)
+            xhr.send()
+            alert(xhr.responseText)
+           
+
+        </script>
+        
+        
+        <!--<script>
+            var myaudio = new Audio()
+            var myaudio2 = new Audio()
+            function loadfunc(){
+                myaudio.src = "1.mp3"
+                myaudio.load();
+                myaudio2.src = "2.mp3"
+                myaudio2.load();
+            }
+            function myfunc(){
+                myaudio.volume = 0.25
+                myaudio.currentTime = 0.5
+                myaudio.play();
+            }
+            function myfunc2(){
+                myaudio2.volume = 0.25
+                myaudio2.currentTime = 0.5
+                myaudio2.play();
+            }
+            setInterval(myfunc, 1000);
+            setInterval(myfunc2, 2000);
+        </script>
+        <button onclick="loadfunc()">start</button>
+        <button onclick="myfunc()">play1</button>
+        <button onclick="myfunc2()">play2</button>-->
+
+        
+        
+        
+        
+        
+        
+        <!--<canvas width=500 height="400" id="mycanvas"></canvas>
+        <script>
+            let canvas=document.getElementById("mycanvas")
+            let ctx=canvas.getContext("2d")
+            let windowWeight = window.innerWidth
+            let windowHeight = window.innerHeight
+            
+
+            var img = new Image()
+            img.src = "free-icon-soccer-ball-657648.png"
+
+            var x = 0;
+            function myfunc(){
+                
+
+                ctx.fillStyle = "white";
+                ctx.fillRect(0, 0, 500, 400)
+
+                ctx.drawImage(img, x/2, 300, 50, 50)
+
+                ctx.font = "2vw Arial"
+                ctx.textAlign = "left"
+                ctx.textBaseline = "middle"
+                ctx.fillStyle = "black"
+                ctx.fillText(x, 0, 15)
+
+                ctx.fillStyle = "yellow";
+                ctx.beginPath();
+                ctx.arc(500-5-x, 100, 20, 0, Math.PI*2)
+                ctx.fill();
+
+                ctx.fillStyle = "red";
+                ctx.fillRect(x+10, 20, 40, 40)
+                ctx.fillStyle = "green";
+                ctx.fillRect(x+35, 30, 40, 40)
+                ctx.fillStyle = "blue";
+                ctx.fillRect(x+15, 40, 40, 40)
+
+                ctx.font = "2vw Arial"
+                ctx.textAlign = "center"
+                ctx.textBaseline = "middle"
+                ctx.fillStyle = "pink"
+                ctx.fillText("Hello", x+40, 200)
+
+                ctx.lineCap = "round"
+                ctx.lineWidth = 10;
+                ctx.StrokeStyle = "black"
+                ctx.beginPath()
+                ctx.moveTo(x/2+25, 325);
+                ctx.lineTo(500-x-2.5, 100)
+                ctx.stroke()
+                x++;
+                requestAnimationFrame(myfunc)
+            }
+            requestAnimationFrame(myfunc)
+        </script>
+        -->
+        <!--<style>
+            button{
+                width: 20px;
+                height: 20px;
+            }
+            #area{
+                width: 1056px;
+                height: 756px;
+                border: 1px solid black;
+            }
+            #mydiv1{
+                position: absolute;
+                left: auto;
+                top: auto;
+                z-index: 0;
+            }
+            #mydiv2{
+                position: absolute;
+                left: 500;
+                top: auto;
+                z-index: 1;
+            }
+        </style>
+        <script>
+            var x1 = 0;
+            var y1 = 0;
+            var dx1 = 3;
+            var dy1 = 3;
+            var x2 = 0;
+            var y2 = 0;
+            var dx2 = 2;
+            var dy2 = 2;
+            var tId;
+            function myfunc(){
+                x1 += dx1;
+                y1 += dy1;
+                x2 += dx2;
+                y2 += dy2;
+                if (x1 > 800) dx1 = -3;
+                if (x1 < 0) dx1 = 3;
+                if (y1 > 500) dy1 = -3;
+                if (y1 < 0) dy1 = 3;
+                if (x2 > 800) dx2 = -2;
+                if (x2 < 0) dx2 = 2;
+                if (y2 > 500) dy2 = -2;
+                if (y2 < 0) dy2 = 2;
+                document.getElementById("mydiv1").style.left = x1 + "px";
+                document.getElementById("mydiv1").style.top = y1 + "px";
+                document.getElementById("mydiv2").style.left = x2 + "px";
+                document.getElementById("mydiv2").style.top = y2 + "px";
+            }
+            function start(){
+                clearInterval(tId);
+                tId = setInterval(myfunc, 1);
+            }
+            function stop(){
+                clearInterval(tId)
+            }
+            
+        </script>
+        <div id="area">
+            <img src="icon.png" id="mydiv1">
+            <img src="icon.png" id="mydiv2">
+        </div>
+        <button onclick="stop()"></button>
+        <button onclick="start()"></button>-->
+        
+        <!--<script>
+            var xOld=1;
+            var yOld=1;
+            function myfunc(x,y){
+                document.getElementById(x+"_"+y).innerHTML="&#9816;";
+                document.getElementById(x+"_"+y).style="color: white; text-align: center";
+                document.getElementById(xOld+"_"+yOld).innerHTML=" ";
+                xOld = x;
+                yOld = y;
+                //alert("x: "+xOld+", y: "+yOld);
+                
+            }
+        </script>
+        <script>
+            var sum = "<table border = 1>";
+            for(var i = 1; i < 9; i++){
+                sum+=  "<tr>";
+                for(var j = 1; j < 9; j++){
+                    if(i%2 == j%2){
+                        sum += "<td onclick='myfunc("+i+","+j+")' id='"+i+"_"+j+"' width = 100 height = 100 bgcolor = yellow></td>";
+                    }
+                    else{
+                        sum += "<td onclick='myfunc("+i+","+j+")' id='"+i+"_"+j+"' width = 100 height = 100 bgcolor = black></td>";
+                    }
+                    }
+                    
+                sum += "</tr>";
+            }
+
+            sum += "</table>"
+
+            document.write(sum);
+        </script>
+        <input type="button" value="test" onclick="myfunc()">-->
+    </body>
+</html>
