@@ -6,14 +6,27 @@ const infoGame = document.getElementById("InfoGame")
 
 let arenaWidth;
 let gameActive;
+let speedCounter;
 
+//Данные мячика//
+let xBall = 0;
+let dxBall = 1;
+let yBall = 0;
+let dyBall = 1;
+let speedBall = 1;
+let radius = 15;
+let ball;
+/////////////////
+
+
+//Данные игрового поля//
 const borderSize = 8;
 const topIndent = 50;
 const infoWindowSize = 200;
-
-//Данные игрового поля//
 let currentPoint = 0;
 let countBonus = 0;
+
+let blockBorder = 2;
 let blocksCount = 0;
 let blockWidth = 60;
 let blockHeight = 20;
@@ -82,7 +95,6 @@ const keyUp = (event) => {
       }
     }
 };
-
 const keyDown = (event) => {
     if (event.key === "d" || event.key === "ArrowRight") {
       keysPressed.d = true;
@@ -100,6 +112,24 @@ const keyDown = (event) => {
       }
     }
 };
+
+function moveBall(){
+    speedCounter.innerHTML = `${xBall} ${yBall}`
+    xBall += dxBall * speedBall;
+    yBall += dyBall * speedBall;
+
+    xBall = Math.max(0, Math.min(arenaWidth - radius, xBall));
+    yBall = Math.max(0, Math.min(arenaHeight - radius, yBall));
+    if (xBall <= radius || xBall >= arenaWidth - radius)
+        dxBall *= -1;
+    if (yBall <= radius || yBall >= arenaHeight - radius)
+        dyBall *= -1;
+
+    ball.style.left = xBall + 'px';
+    ball.style.top = yBall + 'px';
+
+    requestAnimationFrame(moveBall);
+}
 
 const closeGame = function(){
     game1P.style.display = "none";
@@ -153,16 +183,23 @@ btnStart.addEventListener('click', async()=>{
 
     generationBlocks();
 
+    arena.innerHTML += `<div class="balls" id="ball1" style='left: ${arenaWidth / 2}px; top: ${arenaHeight / 2}px; width: ${radius}px; height:${radius}px'>`
+    ball = document.getElementById("ball1");
+    xBall = arenaWidth / 2;
+    yBall = arenaHeight / 2;
+    console.log(ball);
+    moveBall();
+
     arena.innerHTML += `<div class="platform" id="1P" style='left: ${arenaWidth / 2}px; width: ${platformSize}px'></div>`;
     position = arenaWidth / 2;
-
     platform = document.getElementById("1P");
-
+    movePlatform();
     document.addEventListener('keydown', keyDown);
     document.addEventListener('keyup', keyUp);
-    movePlatform();
 
 });
+
+
 
 function generationBlocks(){
     blocksCount= Math.floor(arenaWidth / blockWidth);
@@ -170,18 +207,20 @@ function generationBlocks(){
         blockWidth -= 5;
         blocksCount= Math.floor(arenaWidth / blockWidth);
     }
+
     let position = (arenaWidth - blocksCount * blockWidth) / 2;
-    console.log(position)
     blockHeight = Math.floor(blockWidth / 3);
     let rows = Math.floor(arenaHeight * 0.4 / blockHeight); 
 
-    if (position <= 3 && position >= 1)
+    if (position <= 3 && position >= 1){
+        blockBorder = position;
         styleSheet.innerHTML =
             `.blocks{
                 width: ${blockWidth - position}px;
                 height: ${blockHeight - position}px;
                 border: ${position}px;
             }`
+    }
     else{
         styleSheet.innerHTML =
         `.blocks{
@@ -189,15 +228,17 @@ function generationBlocks(){
             height: ${blockHeight - position}px;
         }`
     }
+
+    let n = 1;
     let typeGeneration = 0//random(0, 1);
     switch(typeGeneration){
         case 0:
             for (let y = 0; y < rows; y++){
                 blockMassive[y] = [];
                 for(var x = 0; x < blocksCount; x++){
-                    arena.innerHTML += `<div class="blocks" style='left: ${position + blockWidth * x}px; top: ${position + blockHeight * y}px'></div>`;
-                    blockMassive[y][x] = position + blockWidth * x;
-                    console.log(blockMassive[y][x]);
+                    arena.innerHTML += `<div class="blocks" id='${n}' style='left: ${position + blockWidth * x}px; top: ${position + blockHeight * y}px'></div>`;
+                    n++;
+                    blockMassive[y][x] = [position + blockWidth * x, n];
                 }
             }
             break;
@@ -212,7 +253,7 @@ function generationBlocks(){
             break;*/
     }
 
-    
+    console.log(blockMassive);
 }   
 
 
