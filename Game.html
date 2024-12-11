@@ -9,6 +9,10 @@
         <script src="scripts/changeUser.js" defer></script>
         <script src="scripts/tableRecords.js" defer></script> 
         <script src="scripts/singleGame.js" defer></script>
+
+        <style>
+            
+        </style>
     </head>
 
     <body>
@@ -23,10 +27,6 @@
             <section id="InfoGame"></section>
           </section>
 
-          <section class="InfoMessageWindow">
-
-          </section>
-
           <section id="ChangeUser" class="InputWindow ">
             <div class="IW-content" id="ChangeUser-content">
                 <h1 class="IW-name">Смена игрока</h1>
@@ -36,6 +36,11 @@
                 <button id="IW-send">Сменить</button>
                 <p id="IW-message""></p>
             </div>
+          </section>
+
+          <section id="InfoMessageWindow">
+            <button id="close-button">&#215;</button>
+            <p id="InfoMessage"></p>
           </section>
           
           <section id="Menu">

@@ -33,7 +33,7 @@ function checkName(name){
 const closeIW = function(event){
     if (event.target === IW) {
         IW.style.display = "none";
-        window.removeEventListener("click", closeIW)
+        window.removeEventListener("onclick", closeIW)
     }
 }
 
@@ -51,7 +51,7 @@ openIW.addEventListener("click", () => {
 
 
 sendBtn.addEventListener("click", async() => {
-    const name = input.value;
+    let name = input.value;
     if (checkName(name) == true){
         if(name == "delete") {
             LS.clear();

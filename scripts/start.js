@@ -4,6 +4,8 @@ var h = Math.ceil(window.innerHeight);
 gameWindow.style.width = w + "px";
 gameWindow.style.height = h + "px";
 
+const styleSheet = document.querySelector("style");
+
 let loadingScreen = document.getElementById("LoadingScreen");
 window.addEventListener("load", ()=>{
     console.log("All resources loaded!");
